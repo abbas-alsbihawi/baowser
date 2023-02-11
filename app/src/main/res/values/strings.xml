@@ -3,4 +3,7 @@
     <string name="second_fragment">Second Fragment</string>
     <string name="remove_fragment">remove Fragment</string>
     <string name="fab_content_desc">description FAB</string>
+    <string name="home">Home</string>
+    <string name="message">Mrssage</string>
+    <string name="notification">Notification</string>
 </resources>

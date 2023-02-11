@@ -1,15 +1,17 @@
 package com.alsbihawi.abbas.mbrowser
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.animation.Animation
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.alsbihawi.abbas.mbrowser.databinding.FragmentOneBinding
+import com.google.android.material.snackbar.Snackbar
 
 class OneFragment:Fragment() {
 
@@ -81,13 +83,21 @@ class OneFragment:Fragment() {
     }
 
     private fun addCallBacks() {
-        binding.floatingActionButton.setOnClickListener {
-            Toast.makeText(context,"hi FAB",Toast.LENGTH_SHORT).show()
+        binding.showDialog.setOnClickListener{
+           val builder=AlertDialog.Builder(context)
+            builder.apply {
+                setTitle("hi abbas")
+                setMessage("how are you ")
+                setPositiveButton("yes") { _, _ ->
+                    Snackbar.make(it, "hi", Snackbar.LENGTH_SHORT).show()
+                }
+            }
+            builder.create().show()
         }
     }
-
     companion object{
         val LOG_TAG="FFF_ONE" //TwoFragment::class.java.simpleName
     }
+
 
 }

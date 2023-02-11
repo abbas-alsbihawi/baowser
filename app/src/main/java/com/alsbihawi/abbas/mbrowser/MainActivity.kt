@@ -5,29 +5,31 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.alsbihawi.abbas.mbrowser.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
+lateinit var binding: ActivityMainBinding
     private val myFirstFragment=OneFragment()
     private val mySecondFragment=TwoFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initSubView()
         initButtons()
     }
 
     private fun initButtons() {
-        findViewById<Button>(R.id.button_change).setOnClickListener {
-            showSecondFragment()
-        }
-        findViewById<Button>(R.id.button_remove).setOnClickListener {
-           removeFragment(TwoFragment.newInstance("abbas"))
-        }
-        findViewById<Button>(R.id.button_replace).setOnClickListener {
-            replaceFragment(TwoFragment.newInstance("abbas"))
-        }
+//        findViewById<Button>(R.id.button_change).setOnClickListener {
+//            showSecondFragment()
+//        }
+//        findViewById<Button>(R.id.button_remove).setOnClickListener {
+//           removeFragment(TwoFragment.newInstance("abbas"))
+//        }
+//        findViewById<Button>(R.id.button_replace).setOnClickListener {
+//            replaceFragment(TwoFragment.newInstance("abbas"))
+//        }
     }
 
     private fun showSecondFragment() {
@@ -39,7 +41,21 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun initSubView() {
-        addFragment(myFirstFragment)
+        addFragment(OneFragment())
+        binding.bottomNavigationView.setOnItemSelectedListener{ item ->
+            when(item.itemId){
+                R.id.homePage-> {
+                    replaceFragment(OneFragment())
+                    true
+                }
+                R.id.messagePage-> {
+                    replaceFragment(TwoFragment())
+                    true
+                }
+                else-> false
+            }
+
+        }
     }
 
     private fun addFragment(fragment:Fragment) {
