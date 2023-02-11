@@ -31,7 +31,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSecondFragment() {
-        addFragment(mySecondFragment)
+//        val  bundle=Bundle()
+//        bundle.putString("name","abbas")
+//        mySecondFragment.arguments=bundle
+        addFragment(TwoFragment.newInstance("abbas"))
     }
 
 
