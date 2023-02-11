@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
             showSecondFragment()
         }
         findViewById<Button>(R.id.button_remove).setOnClickListener {
-           removeFragment(mySecondFragment)
+           removeFragment(TwoFragment.newInstance("abbas"))
         }
         findViewById<Button>(R.id.button_replace).setOnClickListener {
-            replaceFragment(mySecondFragment)
+            replaceFragment(TwoFragment.newInstance("abbas"))
         }
     }
 

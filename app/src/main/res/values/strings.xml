@@ -2,4 +2,5 @@
     <string name="app_name">M browser</string>
     <string name="second_fragment">Second Fragment</string>
     <string name="remove_fragment">remove Fragment</string>
+    <string name="fab_content_desc">description FAB</string>
 </resources>
