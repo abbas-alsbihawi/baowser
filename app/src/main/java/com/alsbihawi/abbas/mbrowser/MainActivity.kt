@@ -1,9 +1,11 @@
 package com.alsbihawi.abbas.mbrowser
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.alsbihawi.abbas.mbrowser.databinding.ActivityMainBinding
 
@@ -67,6 +69,24 @@ lateinit var binding: ActivityMainBinding
         val transaction=  supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container,fragment)
         transaction.commit()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+          when(item.itemId){
+            R.id.action_cart-> {
+               replaceFragment(TwoFragment())
+                return  true
+            }
+            R.id.action_setting-> {
+                replaceFragment(OneFragment())
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+       menuInflater.inflate(R.menu.menu_action_button,menu)
+        return true
     }
     private fun removeFragment(fragment:Fragment) {
         val transaction=  supportFragmentManager.beginTransaction()
